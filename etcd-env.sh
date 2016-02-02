@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ipaddress=$(hostname -i)
+ipaddress=$(hostname -I | cut -f1 -d' ')
 export ETCD_NAME=$HOSTNAME
 export ETCD_DATA_DIR=/var/lib/etcd/$HOSTNAME.etcd
 export ETCD_ADVERTISE_CLIENT_URLS=http://${ipaddress}:2379,http://${ipaddress}:4001
