@@ -4,8 +4,8 @@ MAINTAINER Avesh Agarwal <avagarwa@redhat.com>
 
 ENV container=docker
 
-RUN yum -y install etcd hostname && \
-    yum clean all
+RUN dnf -y install etcd hostname && \
+    dnf clean all
 
 LABEL INSTALL /usr/bin/docker run --rm \$OPT1 --privileged -v /:/host -e HOST=/host -e NAME=\$NAME -e IMAGE=\$IMAGE \$IMAGE \$OPT2 /usr/bin/install.sh  \$OPT3
 LABEL UNINSTALL /usr/bin/docker run --rm \$OPT1 --privileged -v /:/host -e HOST=/host -e NAME=\$NAME -e IMAGE=\$IMAGE \$IMAGE \$OPT2 /usr/bin/uninstall.sh \$OPT3
