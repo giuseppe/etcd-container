@@ -3,7 +3,7 @@ Description=The Etcd Server container
 After=docker.service
 
 [Service]
-ExecStart=/usr/bin/docker start TEMPLATE
+ExecStart=/usr/bin/docker start -a TEMPLATE
 ExecStop=/usr/bin/docker stop TEMPLATE
 
 [Install]

@@ -7,13 +7,14 @@ ENV container=docker
 LABEL Vendor="Red Hat" \
       BZComponent="etcd-docker" \
       Name="rhel7/etcd" \
-      Version="2.1.1" \
-      Release="1" \
+      Version="2.2.5" \
+      Release="2" \
       Architecture="x86_64" \
       Summary="A highly-available key value store for shared configuration"
 
-RUN yum -y --enablerepo rhel-7-server-extras-rpms install etcd hostname && \
-    yum clean all
+RUN yum-config-manager --enable rhel-7-server-extras-rpms || :
+RUN yum -y install etcd hostname
+RUN yum clean all
 
 LABEL INSTALL /usr/bin/docker run --rm \$OPT1 --privileged -v /:/host -e HOST=/host -e NAME=\$NAME -e IMAGE=\$IMAGE \$IMAGE \$OPT2 /usr/bin/install.sh  \$OPT3
 LABEL UNINSTALL /usr/bin/docker run --rm \$OPT1 --privileged -v /:/host -e HOST=/host -e NAME=\$NAME -e IMAGE=\$IMAGE \$IMAGE \$OPT2 /usr/bin/uninstall.sh \$OPT3
