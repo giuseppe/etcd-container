@@ -55,7 +55,7 @@ If etcd-container image is not already built with docker
 # git clone https://github.com/aveshagarwal/etcd-container
 # docker build --rm -t etcd etcd-container/
 ```
-Create tar of etcd-container
+Create a tar of etcd container
 
 ```
 docker export $(docker create etcd) > etcd.tar
