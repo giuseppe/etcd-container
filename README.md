@@ -42,39 +42,39 @@ Uninstalling etcd container on atomic host:
 ```
 # Running etcd container with runc
 
-1. Create a top level `etcd-runc-container` directory
+Create a top level `etcd-runc-container` directory
 
 ```
 mkdir etcd-runc-container
 cd etcd-runc-container
 ```
 
-2. If etcd-container image is not already built with docker
+If etcd-container image is not already built with docker
 
 ```
 # git clone https://github.com/aveshagarwal/etcd-container
 # docker build --rm -t etcd etcd-container/
 ```
-3. Create tar of etcd-container
+Create tar of etcd-container
 
 ```
 docker export $(docker create etcd) > etcd.tar
 ```
 
-4. Untar etcd.tar in rootfs dir 
+Untar etcd.tar in rootfs dir 
 
 ```
 mkdir rootfs
 tar -C rootfs -xf etcd.tar
 ```
 
-5. Copy `exports/config.json.template` to etcd-runc-container
+Copy `exports/config.json.template` to etcd-runc-container
 
 ```
 cp rootfs/exports/config.json.template config.json
 ```
 
-6. Run the etcd container with runc
+Run the etcd container with runc
 
 ```
 runc start etcd
