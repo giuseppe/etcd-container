@@ -1,4 +1,4 @@
-FROM rhel7
+FROM fedora
 
 MAINTAINER Avesh Agarwal <avagarwa@redhat.com>
 
