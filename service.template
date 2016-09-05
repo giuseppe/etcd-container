@@ -3,11 +3,11 @@ Description=Etcd Server
 After=network.target
 
 [Service]
-ExecStart=/bin/runc run "$NAME"
+ExecStart=$EXEC_START
+ExecStop=$EXEC_STOP
 Restart=on-failure
 WorkingDirectory=$DESTDIR
-ExecStop=/bin/runc kill "$NAME"
+RuntimeDirectory=${NAME}
 
 [Install]
 WantedBy=multi-user.target
-

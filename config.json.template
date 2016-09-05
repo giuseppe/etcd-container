@@ -101,8 +101,18 @@
 		},
 		{
 			"type": "bind",
-			"source": "/var/lib",
-			"destination": "/var/lib",
+			"source": "${STATE_DIRECTORY}/etcd/${NAME}.etcd",
+			"destination": "/var/lib/etcd",
+			"options": [
+				"rbind",
+				"rw",
+				"mode=755"
+			]
+		},
+		{
+			"type": "bind",
+			"source": "${RUN_DIRECTORY}/${NAME}",
+			"destination": "/var/run/etcd",
 			"options": [
 				"rbind",
 				"rw",
@@ -110,7 +120,6 @@
 			]
 		}
 	],
-	"hooks": {},
 	"linux": {
 		"capabilities": [
 			"CAP_AUDIT_WRITE",
@@ -145,10 +154,6 @@
 		],
 		"devices": null,
 		"apparmorProfile": "",
-		"selinuxProcessLabel": "",
-		"seccomp": {
-			"defaultAction": "",
-			"architectures": null
-		}
+		"selinuxProcessLabel": ""
 	}
 }
