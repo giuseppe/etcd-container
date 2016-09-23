@@ -27,6 +27,6 @@ ADD uninstall.sh /usr/bin/uninstall.sh
 
 EXPOSE 4001 7001 2379 2380
 
-ADD tmpfiles.template config.json.template service.template /exports/
+ADD tmpfiles.template config.json.template service.template manifest.json /exports/
 
 CMD ["/usr/bin/etcd-env.sh", "/usr/bin/etcd"]
